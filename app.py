@@ -5,7 +5,7 @@ import psycopg2
 
 app = Flask(__name__)
 # engine=create_engine('sqlite:///database.db', echo=True)
-engine=create_engine('postgresql://postgres:postgres@localhost:5432/database.db')
+engine=create_engine('postgresql://postgres:postgres@localhost:5432/database')
 
 
 # Reflect an existing database into a new model
