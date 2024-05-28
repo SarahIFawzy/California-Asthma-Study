@@ -1,9 +1,9 @@
 from flask import Flask, render_template, jsonify
 from sqlalchemy import create_engine, text
-
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 
 # =====================
 # getting the data-----Create the database engine
@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 db_config = {
     'user': 'postgres',
-    'password': 'postgres',
+    'password': 'Toejam.23',
     'host': 'localhost',
     'port': '5432',
     'database': 'database'
