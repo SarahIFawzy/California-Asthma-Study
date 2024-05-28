@@ -80,6 +80,6 @@ header {
 }
 
 
-#chart1,#chart2,#chart3,#chart4{
-    height:50%;
+#chart1,#chart2,#chart3,#chart4,#word-cloud{
+    height:70%;
 }

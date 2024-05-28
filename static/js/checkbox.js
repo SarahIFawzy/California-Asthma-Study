@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', function () {
     resetButton.addEventListener('click', function () {
         checkboxes.forEach(checkbox => {
             checkbox.checked = false;
+            markers.clearLayers();
+            d3.select("#word-cloud").selectAll("*").remove();
+            // reset empty
+            document.getElementById('data-category').value = "";
+            document.getElementById('datasetDropdown').value = "";
         });
         updateSelectedOptions();
     });

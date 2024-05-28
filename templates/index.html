@@ -39,6 +39,35 @@
     <div class="main-content">
         <div class="control-panel animate__animated animate__rotateInDownLeft">
                 <div class="checkbox">
+            <label for="datasetDropdown">Select Dataset:</label>
+            <select class="chart" id="datasetDropdown" onchange="UpdateChart()"></select>
+
+            <label for="data-category">Select Data Category:</label>
+            <select id="data-category">
+                <option value="">- Select Data Category -</option>
+                <option value="Ozone Pctl">Ozone Pctl</option>
+                <option value="PM2.5 Pctl">PM2.5 Pctl</option>
+                <option value="Diesel PM Pctl">Diesel PM Pctl</option>
+                <option value="Pesticides Pctl">Pesticides Pctl</option>
+                <option value="Traffic Pctl">Traffic Pctl</option>
+                <option value="Asthma Pctl">Asthma Pctl</option>
+                <option value="Cardiovascular Disease Pctl">Cardiovascular Disease Pctl</option>
+            </select>
+
+            <div class="selectedDetails">
+                <table id="selectedTable">
+                    <button id="resetButton">Reset</button>
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+
+            <div class="checkbox">
+                <input type="checkbox" id="Population" value="Population">
+                <label for="Population">Population</label>
+            </div>
+            <div class="checkbox">
                 <input type="checkbox" id="Ozone" value="Ozone Pctl">
                 <label for="Ozone">Ozone Pctl</label>
             </div>
@@ -85,32 +114,18 @@
                 </table>
             </div>
             <div class="chart" id="chart3">Rontiff</div>
-          
-        </div>
-        <div class="chart" id="chart2"> <!-- erin -->
-            <div class="control-panel">
-                <label for="data-category">Select Data Category:</label>
-                <select id="data-category">
-                    <option value="Ozone Pctl">Ozone Pctl</option>
-                    <option value="PM2.5 Pctl">PM2.5 Pctl</option>
-                    <option value="Diesel PM Pctl">Diesel PM Pctl</option>
-                    <option value="Pesticides Pctl">Pesticides Pctl</option>
-                    <option value="Traffic Pctl">Traffic Pctl</option>
-                    <option value="Asthma Pctl">Asthma Pctl</option>
-                    <option value="Cardiovascular Disease Pctl">Cardiovascular Disease Pctl</option>
-                </select>
-            </div>
-            <div class="content">
-                    <div id="word-cloud"></div>  
-            </div>
-    
-        <script src="../static/js/wordCloud.js"></script>
+            <div class="chart" id="word-cloud"></div>
         </div>
         
     </div>
-    <script src="../static/js/ron.js"></script>
+    <script src="../static/js/fetched_data.js"></script>
+    <script src="../static/js/create_dropdown.js"></script>
+    <script src="../static/js/initialize_map.js"></script>
+    <script src="../static/js/update_map.js"></script>
     <script src="../static/js/checkbox.js"></script>
+    <script src="../static/js/wordCloud.js"></script>
     <script src="../static/js/timeplot.js"></script>
+
 </body>
 </html>
 
