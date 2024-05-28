@@ -16,13 +16,27 @@ document.addEventListener('DOMContentLoaded', function () {
         updateSelectedOptions();
     });
 
+    
     function updateSelectedOptions() {
         selectedTable.innerHTML = ''; // Clear the table
+    
+        const definitions = {
+            Ozone: "Amount of daily maximum 8 hour Ozone concentration; percentile",
+            PM25: "Annual mean PM 2.5 concentrations; percentile",
+            Diesel: "Diesel PM emissions from on-road and non-road sources; percentile",
+            Pesticides: "Total pounds of selected active pesticide ingredients used in production-agriculture per square mile in the census tract; percentile",
+            Traffic: "Traffic density, in vehicle-kilometers per hour per road length, within 150 meters of the census tract boundary; percentile",
+            Asthma: "Age-adjusted rate of emergency department visits for asthma per 10,000 people; percentile",
+            CD: "Age-adjusted rate of emergency department visits for heart attacks per 10,000 people; percentile",
+            Poverty: "Percent of population living below two times the federal poverty level; percentile"
+        };
+    
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 const row = document.createElement('tr');
                 const cell = document.createElement('td');
-                cell.textContent = checkbox.value;
+                const definition = definitions[checkbox.id];
+                cell.innerHTML = `<strong>${checkbox.value}</strong>: ${definition}`;
                 row.appendChild(cell);
                 selectedTable.appendChild(row);
             }
