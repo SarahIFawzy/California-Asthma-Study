@@ -15,7 +15,7 @@ db_config = {
     'password': 'postgres',
     'host': 'localhost',
     'port': '5432',
-    'database': 'asthma_db'
+    'database': 'database'
 }
 
 
