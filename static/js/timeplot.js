@@ -146,7 +146,7 @@ function init() {
             x: [2018, 2019, 2021],
             y: [PM18avg, PM19avg, PM22avg],
             type: 'scatter',
-            name: 'PM2.5'
+            name: 'PM2.5 Pctl'
         };
         var pestData = {
             x: [2018, 2019, 2021],
@@ -235,3 +235,4 @@ function init() {
 }
 
 init()
+

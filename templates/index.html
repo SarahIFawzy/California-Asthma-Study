@@ -25,7 +25,7 @@
      <!-- ========= word cloud imports======== -->
    <!-- Your other CSS and JavaScript imports -->
     <!-- Include d3.js -->
-    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- <script src="https://d3js.org/d3.v4.js"></script> -->
     <!-- Load d3-cloud -->
     <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
     <style src="../static/css/wordCloud.css"></style>
@@ -38,7 +38,7 @@
     </header>
     <div class="main-content">
         <div class="control-panel animate__animated animate__rotateInDownLeft">
-
+                <div class="checkbox">
             <label for="datasetDropdown">Select Dataset:</label>
             <select class="chart" id="datasetDropdown" onchange="UpdateChart()"></select>
 
@@ -72,7 +72,7 @@
                 <label for="Ozone">Ozone Pctl</label>
             </div>
             <div class="checkbox">
-                <input type="checkbox" id="PM2.5" value="PM2.5 Pctl">
+                <input type="checkbox" id="PM25" value="PM2.5 Pctl">
                 <label for="PM2.5">PM2.5 Pctl</label>
             </div>
             <div class="checkbox">
@@ -88,21 +88,31 @@
                 <label for="Traffic">Traffic Pctl</label>
             </div>
             <div class="checkbox">
-                <input type="checkbox" id="Cardiovascular Disease" value="Cardiovascular Disease Pctl">
+                <input type="checkbox" id="CD" value="Cardiovascular Disease Pctl">
                 <label for="Cardiovascular Disease">Cardiovascular Disease Pctl</label>
             </div>
             <div class="checkbox">
                 <input type="checkbox" id="Poverty" value="Poverty Pctl">
                 <label for="Poverty">Poverty Pctl</label>
             </div>
-            </div>
             <div class="checkbox">
-                <input type="checkbox" id="Asthma Hospital Visits" value="Asthma Hospital Visits Pctl">
-                <label for="Asthma Hospital Visits">Asthma Hospital Visits Pctl</label>
+                <input type="checkbox" id="Population" value="Population">
+                <label for="Population">Population</label>
             </div>
+
                 
         </div>
         <div class="content animate__animated animate__fadeInRight" >
+            <div class="chart" id="chart1"></div> <!-- Sarah -->
+            <div class="selectedDetails">
+                <table id="selectedTable">
+                    <button id="resetButton">Reset</button>
+                    <thead>
+    
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
             <div class="chart" id="chart3">Rontiff</div>
             <div class="chart" id="word-cloud"></div>
         </div>
