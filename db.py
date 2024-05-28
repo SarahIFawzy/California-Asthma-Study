@@ -1,13 +1,44 @@
 import pandas as pd
 from sqlalchemy import create_engine
+import psycopg2
 import os
-from config import db_config
+
+
+# Database configuration
+db_config = {
+    'user': 'postgres',
+    'password': 'postgres',
+    'host': 'localhost',
+    'port': '5432',
+    'database': 'database'
+}
+
+# Create a connection to the PostgreSQL server to create the database if it doesn't exist
+def create_database(config):
+    conn = psycopg2.connect(
+        dbname='postgres',
+        user=config['user'],
+        password=config['password'],
+        host=config['host'],
+        port=config['port']
+    )
+    conn.autocommit = True
+    cursor = conn.cursor()
+    cursor.execute(f"SELECT 1 FROM pg_catalog.pg_database WHERE datname = '{config['database']}'")
+    exists = cursor.fetchone()
+    if not exists:
+        cursor.execute(f"CREATE DATABASE {config['database']}")
+        print(f"Database '{config['database']}' created successfully!")
+    else:
+        print(f"Database '{config['database']}' already exists.")
+    cursor.close()
+    conn.close()
+
+# Create the database if it doesn't exist
+create_database(db_config)
 
 # Create the database engine
-
-# rontiff engine
 engine = create_engine(f"postgresql+psycopg2://{db_config['user']}:{db_config['password']}@{db_config['host']}:{db_config['port']}/{db_config['database']}")
-
 
 # Path to the folder containing CSV files
 csv_folder_path = 'data/'
