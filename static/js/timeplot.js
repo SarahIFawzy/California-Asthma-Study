@@ -1,6 +1,5 @@
 function init() {
     d3.json("http://localhost:5000/data").then((data) => {
-        console.log(data);
         const data18 = data.survey_2018;
         const data19 = data.survey_2019;
         const data22 = data.survey_2022;
@@ -113,25 +112,126 @@ function init() {
         const traffic19avg = traffic19sum / data19.length;
         const traffic22avg = traffic22sum / data22.length;
 
-        console.log("avg 2018 population is", pop18avg);
-        console.log("avg 2019 population is", pop19avg);
-        console.log("avg 2022 population is", pop22avg);
+        var popData = {
+            x: [2018, 2019, 2021],
+            y: [pop18avg/100, pop19avg/100, pop22avg/100],
+            type: 'scatter',
+            name: 'Population'
+         };
+        var asthmaData = {
+            x: [2018, 2019, 2021],
+            y: [asthma18avg, asthma19avg, asthma22avg],
+            type: 'scatter',
+            name: 'Asthma Pctl'
+        };
+        var CDData = {
+            x: [2018, 2021],
+            y: [CD18avg, CD22avg],
+            type: 'scatter',
+            name: 'Cardiovascular Disease Pctl'
+        };
+        var DPMData = {
+            x: [2018, 2019, 2021],
+            y: [DPM18avg, DPM19avg, DPM22avg],
+            type: 'scatter',
+            name: 'Diesel Pctl'
+        };
+        var ozoneData = {
+            x: [2018, 2019, 2021],
+            y: [ozone18avg, ozone19avg, ozone22avg],
+            type: 'scatter',
+            name: 'Ozone Pctl'
+        };
+        var PMData = {
+            x: [2018, 2019, 2021],
+            y: [PM18avg, PM19avg, PM22avg],
+            type: 'scatter',
+            name: 'PM2.5'
+        };
+        var pestData = {
+            x: [2018, 2019, 2021],
+            y: [pest18avg, pest19avg, pest22avg],
+            type: 'scatter',
+            name: 'Pesticides Pctl'
+        };
+        var povertyData = {
+            x: [2018, 2019, 2021],
+            y: [poverty18avg, poverty19avg, poverty22avg],
+            type: 'scatter',
+            name: 'Poverty Pctl'
+        };
+        var trafficData = {
+            x: [2018, 2019, 2021],
+            y: [traffic18avg, traffic19avg, traffic22avg],
+            type: 'scatter',
+            name: 'Traffic Pctl'
+        };
 
-        console.log("avg 2018 ozone is", ozone18avg);
-        console.log("avg 2019 ozone is", ozone19avg);
-        console.log("avg 2022 ozone is", ozone22avg);
 
-        console.log("data 18", data18)
-        console.log("data 19", data19)
-        console.log("data 22", data22)
+        var datasets = [
+            {name: 'Population', values: popData, visible: false},
+            {name: 'Ozone Pctl', values: ozoneData, visible: false},
+            {name: 'PM2.5 Pctl', values: PMData, visible: false},
+            {name: 'Diesel Pctl', values: DPMData, visible: false},
+            {name: 'Pesticides Pctl', values: pestData, visible: false},
+            {name: 'Traffic Pctl', values: trafficData, visible: false},
+            {name: 'Cardiovascular Disease Pctl', values: CDData, visible: false},
+            {name: 'Poverty Pctl', values: povertyData, visible: false},
+            {name: 'Asthma Pctl', values: asthmaData, visible: true}
+        ];
+
+        var data = [asthmaData];
+        
+        var layout = {
+        title: 'Potential Contributors to Asthma',
+        showlegend: true,
+        height: 300,
+        width: 600,
+        xaxis: {
+            title: 'Year'
+        },
+        yaxis: {
+            title: 'Percentile'
+        }};
+        
+        Plotly.newPlot('chart1', data, layout);
+        
+        d3.selectAll('.control-panel input[type="checkbox"]').on('change', function() {
+            let checkboxValue = d3.select(this).attr('value');
+          
+            datasets.forEach((dataset) => {
+              if (dataset.name === checkboxValue) {
+                dataset.visible = this.checked;
+              }
+            });
+            updatePlot();
+        });
+
+        function updatePlot() {
+            let visibleDatasets = datasets.filter(d => d.visible);
+
+            data=[];
+
+            visibleDatasets.forEach((dataset) => {
+              if (dataset.visible) {
+                data.push(dataset['values']);
+              }
+              
+            });
+            Plotly.newPlot('chart1', data, layout);
+          }
+
+        
+          resetButton.addEventListener('click', function () {
+            data = [asthmaData]
+            Plotly.newPlot('chart1', data, layout)
+            });
+
     });
 
-    // const popCheck = d3.select("#Population")
-    // const ozoneCheck = d3.select("#Ozone")
-    // const pmCheck = d3.select("#PM2.5")
-    // const DPMCheck = d3.select("#Diesel")
-    // const pestCheck = d3.select("#Pesticides")
-    // const Check = d3.select("#Ozone")
+
+    
+
 }
 
-init();
+init()
