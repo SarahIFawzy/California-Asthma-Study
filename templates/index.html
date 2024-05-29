@@ -40,24 +40,10 @@
     <header>
         <h1 class="animate__animated animate__bounce">Asthma Dashboard</h1>
     </header>
+
     <div class="main-content">
         <div class="control-panel animate__animated animate__rotateInDownLeft">
             <div class="checkbox">
-                <label for="datasetDropdown">Select Dataset:</label>
-                <select class="chart" id="datasetDropdown" onchange="UpdateMap()"></select>
-
-                <label for="data-category">Select Data Category:</label>
-                <select id="data-category">
-                    <option value="">- Select Data Category -</option>
-                    <option value="Ozone Pctl">Ozone Pctl</option>
-                    <option value="PM2.5 Pctl">PM2.5 Pctl</option>
-                    <option value="Diesel PM Pctl">Diesel PM Pctl</option>
-                    <option value="Pesticides Pctl">Pesticides Pctl</option>
-                    <option value="Traffic Pctl">Traffic Pctl</option>
-                    <option value="Asthma Pctl">Asthma Pctl</option>
-                    <option value="Cardiovascular Disease Pctl">Cardiovascular Disease Pctl</option>
-                </select>
-
                 <div class="selectedDetails">
                     <table id="selectedTable">
                         <button id="resetButton">Reset</button>
@@ -106,9 +92,31 @@
             </div>
         </div>
         <div class="content animate__animated animate__fadeInRight">
-            <div class="chart" id="chart3">Rontiff</div>
-            <div class="chart" id="word-cloud"></div>
-            <div class="chart" id="chart1"></div>
+
+            <div>
+                <div class="dropdown_title" style="color: white;font-size: 80px;">........</div>
+                <div class="chart" id="chart1"></div>
+            </div>
+            <div>
+                <div class="dropdown_title">Select Dataset:</div>
+                <select class="chart" id="datasetDropdown" onchange="UpdateMap()"></select>
+                <div class="chart" id="chart3">Rontiff</div>
+            </div>
+            <div>
+                <div class="dropdown_title">Select Data Category::</div>
+                <select id="data-category">
+                    <option value="">- Select Data Category -</option>
+                    <option value="Ozone Pctl">Ozone Pctl</option>
+                    <option value="PM2.5 Pctl">PM2.5 Pctl</option>
+                    <option value="Diesel PM Pctl">Diesel PM Pctl</option>
+                    <option value="Pesticides Pctl">Pesticides Pctl</option>
+                    <option value="Traffic Pctl">Traffic Pctl</option>
+                    <option value="Asthma Pctl">Asthma Pctl</option>
+                    <option value="Cardiovascular Disease Pctl">Cardiovascular Disease Pctl</option>
+                </select>
+                <div class="chart" id="word-cloud"></div>
+            </div>
+            
         </div>
     </div>
         
