@@ -223,9 +223,24 @@ function init() {
 
         
           resetButton.addEventListener('click', function () {
-            data = [asthmaData]
-            Plotly.newPlot('chart1', data, layout)
+            d3.selectAll('.control-panel input[type="checkbox"]').property('checked', false);
+        
+            datasets.forEach((dataset) => {
+                dataset.visible = false;
             });
+        
+            updatePlot();
+        });
+        
+        function updatePlot() {
+            let visibleDatasets = datasets.filter(d => d.visible);
+            data = [asthmaData];
+            visibleDatasets.forEach((dataset) => {
+                data.push(dataset['values']);
+            });
+        
+            Plotly.newPlot('chart1', data, layout);
+        }
 
     });
 
