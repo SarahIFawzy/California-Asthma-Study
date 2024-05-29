@@ -185,7 +185,7 @@ function init() {
         var layout = {
         title: 'Potential Contributors to Asthma',
         showlegend: true,
-        height: 300,
+        height: 600,
         width: 600,
         xaxis: {
             title: 'Year'
