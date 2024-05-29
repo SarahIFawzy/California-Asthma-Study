@@ -17,8 +17,8 @@ function createDropDown(data) {
     }
 
     // Add event listener for change event
-    dropdown.addEventListener('change', updateChart);
+    dropdown.addEventListener('change', UpdateChart);
 
     // Update chart with the default selected dataset
-    updateChart(); // Call updateChart without arguments
+    // UpdateChart(); // Call updateChart without arguments
 }

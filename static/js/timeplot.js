@@ -1,5 +1,5 @@
 function init() {
-    d3.json("http://localhost:5000/data").then((data) => {
+    d3.json("http://127.0.0.1:5000/data").then((data) => {
         const data18 = data.survey_2018;
         const data19 = data.survey_2019;
         const data22 = data.survey_2022;
@@ -218,14 +218,25 @@ function init() {
               }
               
             });
+
+            console.log(data);
             Plotly.newPlot('chart1', data, layout);
           }
-
-        
-          resetButton.addEventListener('click', function () {
-            data = [asthmaData]
-            Plotly.newPlot('chart1', data, layout)
+resetButton.addEventListener('click', function () {
+            d3.selectAll('.control-panel input[type="checkbox"]').property('checked', false);
+            datasets.forEach((dataset) => {
+                dataset.visible = false;
             });
+            updatePlot();
+        });
+        function updatePlot() {
+            let visibleDatasets = datasets.filter(d => d.visible);
+            data = [asthmaData];
+            visibleDatasets.forEach((dataset) => {
+                data.push(dataset['values']);
+            });
+            Plotly.newPlot('chart1', data, layout);
+        }       
 
     });
 

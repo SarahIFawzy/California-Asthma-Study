@@ -47,7 +47,7 @@ header {
 
 
 .selectedDetails {
-    width: 20%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     /* justify-content: space-around; */
@@ -85,5 +85,6 @@ header {
 
 
 #chart1,#chart2,#chart3,#chart4,#word-cloud{
-    height:70%;
+    height:700px;
+    
 }

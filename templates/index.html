@@ -44,7 +44,7 @@
         <div class="control-panel animate__animated animate__rotateInDownLeft">
             <div class="checkbox">
                 <label for="datasetDropdown">Select Dataset:</label>
-                <select class="chart" id="datasetDropdown" onchange="UpdateChart()"></select>
+                <select class="chart" id="datasetDropdown" onchange="UpdateMap()"></select>
 
                 <label for="data-category">Select Data Category:</label>
                 <select id="data-category">
@@ -116,13 +116,14 @@
         
         
 
-    <script src="../static/js/fetched_data.js"></script>
-    <script src="../static/js/create_dropdown.js"></script>
-    <script src="../static/js/initialize_map.js"></script>
-    <script src="../static/js/update_map.js"></script>
-    <script src="../static/js/checkbox.js"></script>
-    <script src="../static/js/wordCloud.js"></script>
-    <script src="../static/js/timeplot.js"></script>
+    <!-- <script src="{{url_for('static', filename='js/ron.js')}}"></script> -->
+    <script src="{{url_for('static', filename='js/fetched_data.js')}}"></script>
+    <script src="{{url_for('static', filename='js/create_dropdown.js')}}"></script>
+    <script src="{{url_for('static', filename='js/initialize_map.js')}}"></script>
+    <script src="{{url_for('static', filename='js/update_map.js')}}"></script>
+    <script src="{{url_for('static', filename='js/checkbox.js')}}"></script>
+    <script src="{{url_for('static', filename='js/wordCloud.js')}}"></script>
+    <script src="{{url_for('static', filename='js/timeplot.js')}}"></script>
 </body>
 
 </html>

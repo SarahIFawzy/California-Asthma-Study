@@ -12,7 +12,7 @@ CORS(app)
 
 db_config = {
     'user': 'postgres',
-    'password': 'Toejam.23',
+    'password': 'postgres',
     'host': 'localhost',
     'port': '5432',
     'database': 'database'

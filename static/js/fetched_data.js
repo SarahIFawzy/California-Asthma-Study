@@ -1,5 +1,5 @@
 // get data
-let fetchedData = {}; 
+var fetchedData = {}; 
 
 // Fetch data from the server
 fetch('/data')
