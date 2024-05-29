@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,111 +14,108 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-     <!-- Marker cluster JavaScript code -->
-     <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+    <!-- Marker cluster JavaScript code -->
+    <script type="text/javascript"
+        src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
 
-     <!-- Marker cluster CSS -->
-     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
-     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
-   
-     <!-- ========= word cloud imports======== -->
-   <!-- Your other CSS and JavaScript imports -->
+    <!-- Marker cluster CSS -->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+
+    <!-- ========= word cloud imports======== -->
+    <!-- Your other CSS and JavaScript imports -->
     <!-- Include d3.js -->
     <!-- <script src="https://d3js.org/d3.v4.js"></script> -->
     <!-- Load d3-cloud -->
     <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
     <style src="../static/css/wordCloud.css"></style>
     <!-- ==================== -->
-     
+
 </head>
+
 <body>
     <header>
         <h1 class="animate__animated animate__bounce">Asthma Dashboard</h1>
     </header>
     <div class="main-content">
         <div class="control-panel animate__animated animate__rotateInDownLeft">
+            <div class="checkbox">
+                <label for="datasetDropdown">Select Dataset:</label>
+                <select class="chart" id="datasetDropdown" onchange="UpdateChart()"></select>
+
+                <label for="data-category">Select Data Category:</label>
+                <select id="data-category">
+                    <option value="">- Select Data Category -</option>
+                    <option value="Ozone Pctl">Ozone Pctl</option>
+                    <option value="PM2.5 Pctl">PM2.5 Pctl</option>
+                    <option value="Diesel PM Pctl">Diesel PM Pctl</option>
+                    <option value="Pesticides Pctl">Pesticides Pctl</option>
+                    <option value="Traffic Pctl">Traffic Pctl</option>
+                    <option value="Asthma Pctl">Asthma Pctl</option>
+                    <option value="Cardiovascular Disease Pctl">Cardiovascular Disease Pctl</option>
+                </select>
+
+                <div class="selectedDetails">
+                    <table id="selectedTable">
+                        <button id="resetButton">Reset</button>
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+
                 <div class="checkbox">
-            <label for="datasetDropdown">Select Dataset:</label>
-            <select class="chart" id="datasetDropdown" onchange="UpdateChart()"></select>
-
-            <label for="data-category">Select Data Category:</label>
-            <select id="data-category">
-                <option value="">- Select Data Category -</option>
-                <option value="Ozone Pctl">Ozone Pctl</option>
-                <option value="PM2.5 Pctl">PM2.5 Pctl</option>
-                <option value="Diesel PM Pctl">Diesel PM Pctl</option>
-                <option value="Pesticides Pctl">Pesticides Pctl</option>
-                <option value="Traffic Pctl">Traffic Pctl</option>
-                <option value="Asthma Pctl">Asthma Pctl</option>
-                <option value="Cardiovascular Disease Pctl">Cardiovascular Disease Pctl</option>
-            </select>
-
-            <div class="selectedDetails">
-                <table id="selectedTable">
-                    <button id="resetButton">Reset</button>
-                    <thead></thead>
-                    <tbody></tbody>
-                </table>
+                    <input type="checkbox" id="Population" value="Population">
+                    <label for="Population">Population</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="Ozone" value="Ozone Pctl">
+                    <label for="Ozone">Ozone Pctl</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="PM25" value="PM2.5 Pctl">
+                    <label for="PM2.5">PM2.5 Pctl</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="Diesel" value="Diesel Pctl">
+                    <label for="Diesel">Diesel Pctl</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="Pesticides" value="Pesticides Pctl">
+                    <label for="Pesticides">Pesticides Pctl</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="Traffic" value="Traffic Pctl">
+                    <label for="Traffic">Traffic Pctl</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="CD" value="Cardiovascular Disease Pctl">
+                    <label for="Cardiovascular Disease">Cardiovascular Disease Pctl</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="Poverty" value="Poverty Pctl">
+                    <label for="Poverty">Poverty Pctl</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="Population" value="Population">
+                    <label for="Population">Population</label>
+                </div>
             </div>
-
-
-            <div class="checkbox">
-                <input type="checkbox" id="Population" value="Population">
-                <label for="Population">Population</label>
-            </div>
-            <div class="checkbox">
-                <input type="checkbox" id="Ozone" value="Ozone Pctl">
-                <label for="Ozone">Ozone Pctl</label>
-            </div>
-            <div class="checkbox">
-                <input type="checkbox" id="PM25" value="PM2.5 Pctl">
-                <label for="PM2.5">PM2.5 Pctl</label>
-            </div>
-            <div class="checkbox">
-                <input type="checkbox" id="Diesel" value="Diesel Pctl">
-                <label for="Diesel">Diesel Pctl</label>
-            </div>
-            <div class="checkbox">
-                <input type="checkbox" id="Pesticides" value="Pesticides Pctl">
-                <label for="Pesticides">Pesticides Pctl</label>
-            </div>
-            <div class="checkbox">
-                <input type="checkbox" id="Traffic" value="Traffic Pctl">
-                <label for="Traffic">Traffic Pctl</label>
-            </div>
-            <div class="checkbox">
-                <input type="checkbox" id="CD" value="Cardiovascular Disease Pctl">
-                <label for="Cardiovascular Disease">Cardiovascular Disease Pctl</label>
-            </div>
-            <div class="checkbox">
-                <input type="checkbox" id="Poverty" value="Poverty Pctl">
-                <label for="Poverty">Poverty Pctl</label>
-            </div>
-            <div class="checkbox">
-                <input type="checkbox" id="Population" value="Population">
-                <label for="Population">Population</label>
-            </div>
-
-                
         </div>
-        <div class="content animate__animated animate__fadeInRight" >
-            <div class="chart" id="chart1"></div> <!-- Sarah -->
-            <div class="selectedDetails">
-                <table id="selectedTable">
-                    <button id="resetButton">Reset</button>
-                    <thead>
-    
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
+        <div class="content animate__animated animate__fadeInRight">
             <div class="chart" id="chart3">Rontiff</div>
             <div class="chart" id="word-cloud"></div>
+            <div class="chart" id="chart1"></div>
         </div>
-        
     </div>
+        
+
+        
+        
+
     <script src="../static/js/fetched_data.js"></script>
     <script src="../static/js/create_dropdown.js"></script>
     <script src="../static/js/initialize_map.js"></script>
@@ -125,15 +123,6 @@
     <script src="../static/js/checkbox.js"></script>
     <script src="../static/js/wordCloud.js"></script>
     <script src="../static/js/timeplot.js"></script>
-
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
