@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         selectedTable.innerHTML = ''; // Clear the table
     
         const definitions = {
+            Population: "Average population",
             Ozone: "Amount of daily maximum 8 hour Ozone concentration; percentile",
             PM25: "Annual mean PM 2.5 concentrations; percentile",
             Diesel: "Diesel PM emissions from on-road and non-road sources; percentile",
