@@ -1,6 +1,6 @@
 
 // This function handles the change event of the dropdown menu
-function updateChart() {  // Remove data argument
+function UpdateMap() {  // Remove data argument
     const dropdown = document.getElementById('datasetDropdown');  
     const selectedDataset = dropdown.value;                       
     const selectedData = fetchedData[selectedDataset];            
@@ -15,7 +15,7 @@ function updateChart() {  // Remove data argument
         }
         let marker = L.marker([region["Latitude"], region["Longitude"]]);
         markers.addLayer(marker); 
-        console.log("hi");
+        // console.log("hi");
     }
 
     // Add the marker cluster group to the map
