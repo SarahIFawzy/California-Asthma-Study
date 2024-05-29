@@ -61,6 +61,17 @@ header {
 #resetButton {
     height: 60px;
     width: 100%;
+    font-size: 20px;
+}
+
+#datasetDropdown, #data-category{
+    height: 60px;
+    width: 100%;
+    font-size: 20px;
+}
+
+.dropdown_title{
+    font-size: 20px;
 }
 
 .content {
